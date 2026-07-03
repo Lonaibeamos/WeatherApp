@@ -1,0 +1,157 @@
+/* Modern Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Glassmorphism Container Style */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+}
+
+button,
+#search {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #ffcc33;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Main Weather Panel */
+#main {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#Item1,
+#Item3 {
+  display: flex;
+  justify-content: space-between;
+}
+
+#Item2 {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
+/* Forecast Grid */
+#second-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 900px;
+}
+
+#second-main > div {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+#second-main > div:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.warning {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Restrict images to be smaller and contained */
+img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain; /* Prevents stretching/distortion */
+  display: block;
+  margin: 10px auto;
+}
+
+/* Fix the grid layout for the forecast cards */
+#second-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 20px;
+}
+
+#second-main > div {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ensure text inside cards doesn't overflow */
+#second-main > div p,
+#second-main > div div {
+  font-size: 0.85rem;
+  margin: 2px 0;
+}

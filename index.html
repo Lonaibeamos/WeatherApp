@@ -1,0 +1,521 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Weather app</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<form action="">
+<label for="inp">Enter a city's name: &nbsp;</label>
+<input type="text" placeholder="e.g: london" id="inp" />
+
+<input type="submit" value="search Location" id="search" />
+
+<!--this button is not for submitting the form-->
+
+<button type="button">&nbsp; &nbsp;C</button>
+
+</form>
+
+
+
+<div id="main">
+
+<div id="Item1">
+
+<div id="item11">
+
+<ul>
+
+<li class="country">munic</li>
+
+<li class="time">Time</li>
+
+</ul>
+
+</div>
+
+<div id="item12">
+
+<ul>
+
+<li class="warning1">Warning:</li>
+
+<li class="warning">xxxx</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div id="Item2">
+
+<p style="flex-basis: 100%"> <h1 class="names">today</h1></p>
+
+<img src="assets/icons/clear-day.png" alt="" class="icon" />
+
+<h1>
+
+<span class="span1">88</span> <sup>o</sup>
+
+<span class="span2">F</span>
+
+</h1>
+
+<h2>clear</h2>
+
+</div>
+
+<div id="Item3">
+
+<ul class="last">
+
+<li class="temp">Temp:</li>
+
+<li class="hum">humidity:</li>
+
+<li class="wind">windspeed:</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div id="second-main">
+
+<div class="item1">
+
+<p class="names"></p>
+
+<p class="sun" id="day1"></p>
+
+<img src="#" alt="#" class="day1" />
+
+<div class="temp1"></div>
+
+<div class="win1"></div>
+
+</div>
+
+<div class="item2">
+
+<p class="names"></p>
+
+<p id="day2"></p>
+
+<img src="#" alt="#" class="day2" />
+
+<div class="temp2"></div>
+
+<div class="win2"></div>
+
+</div>
+
+<div class="item3">
+
+<p class="names"></p>
+
+<p id="day3"></p>
+
+<img src="#" alt="#" class="day3" />
+
+<div class="temp3"></div>
+
+<div class="win3"></div>
+
+</div>
+
+<div class="item4">
+
+<p class="names"></p>
+
+<p id="day4"></p>
+
+<img src="#" alt="#" class="day4" />
+
+<div class="temp4"></div>
+
+<div class="win4"></div>
+
+</div>
+
+<div class="item5">
+
+<p class="names"></p>
+
+<p id="day5"></p>
+
+<img src="#" alt="#" class="day5" />
+
+<div class="temp5"></div>
+
+<div class="win5"></div>
+
+</div>
+
+<div class="item6">
+
+<p class="names"></p>
+
+<p id="day6"></p>
+
+<img src="#" alt="#" class="day6" />
+
+<div class="temp6"></div>
+
+<div class="win6"></div>
+
+</div>
+<div class="item7">
+<p class="names"></p>
+<p id="day7"></p>
+<img src="#" alt="#" class="day7" />
+<div class="temp7"></div>
+<div class="win7"></div>
+</div>
+</div>
+<script>
+
+//state
+
+let isFahrenheit = true;
+
+let apiTemperature = 0;
+
+//dom
+
+const body = document.body;
+
+const btn = document.querySelector("button");
+
+const main2 = body.lastElementChild.previousElementSibling;
+
+const main1 = main2.previousElementSibling;
+
+
+
+const span1 = document.querySelector(".span1");
+
+const span2 = document.querySelector(".span2");
+
+
+
+const country = document.querySelector(".country");
+
+const time = document.querySelector(".time");
+
+const warning1 = document.querySelector(".warning1");
+
+const warning2 = document.querySelector(".warning");
+
+
+
+const temperature = document.querySelector(".temp");
+
+const humidity = document.querySelector(".hum");
+
+const wind = document.querySelector(".wind");
+
+
+
+const temp1 = document.querySelector(".temp1");
+
+const temp2 = document.querySelector(".temp2");
+
+const temp3 = document.querySelector(".temp3");
+
+const temp4 = document.querySelector(".temp4");
+
+const temp5 = document.querySelector(".temp5");
+
+const temp6 = document.querySelector(".temp6");
+
+const temp7 = document.querySelector(".temp7");
+
+
+
+const wind1 = document.querySelector(".win1");
+
+const wind2 = document.querySelector(".win2");
+
+const wind3 = document.querySelector(".win3");
+
+const wind4 = document.querySelector(".win4");
+
+const wind5 = document.querySelector(".win5");
+
+const wind6 = document.querySelector(".win6");
+
+const wind7 = document.querySelector(".win7");
+
+
+
+const icon = document.querySelector(".icon");
+
+
+
+const h1 = document.querySelector("h1");
+
+const h2 = document.querySelector("h2");
+
+
+
+const p1 = document.getElementById("day1");
+
+const p2 = document.getElementById("day2");
+
+const p3 = document.getElementById("day3");
+
+
+
+const p4 = document.getElementById("day4");
+
+const p5 = document.getElementById("day5");
+
+const p6 = document.getElementById("day6");
+
+const p7 = document.getElementById("day7");
+
+
+
+const i1 = document.getElementsByClassName("day1");
+
+const i2 = document.getElementsByClassName("day2");
+
+const i3 = document.getElementsByClassName("day3");
+
+
+
+const i4 = document.getElementsByClassName("day4");
+
+const i5 = document.getElementsByClassName("day5");
+
+const i6 = document.getElementsByClassName("day6");
+
+const i7 = document.getElementsByClassName("day7");
+
+
+
+const forecastCards = document.querySelectorAll("#second-main > div");
+
+const temps = document.querySelectorAll("[class^='temp']");
+
+const winds = document.querySelectorAll("[class^='win']");
+
+const imgs = document.querySelectorAll("[class^='day']");
+
+const times = document.querySelectorAll("[id^='day']");
+
+const days = document.querySelectorAll("[class='names']");
+
+
+
+const input = document.getElementById("inp");
+
+const searchBtn = document.getElementById("search");
+
+
+
+console.log(temps);
+
+console.log(winds);
+
+console.log(days);
+
+console.log(forecastCards);
+
+
+
+function clearUI() {
+
+country.textContent = "";
+
+time.textContent = "";
+
+warning1.textContent = "";
+
+warning2.textContent = "";
+
+span1.textContent = "";
+
+h2.textContent = "";
+
+temperature.textContent = "";
+
+humidity.textContent = "";
+
+wind.textContent = "";
+
+}
+
+function requestApi() {
+  const targetLocation = input.value.trim().toLowerCase() || "london";
+  const API_KEY = "A7JSY3YUHWE7S454SNKKJRNLK";
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${targetLocation}/?key=${API_KEY}`;
+
+  return fetch(url)
+    .then((response) =>
+      !response.ok
+        ? Promise.reject(new Error(`http Error: ${response.status}`))
+        : response.json()
+    )
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+}
+
+
+
+
+
+searchBtn.addEventListener("click", (e) => {
+
+e.preventDefault();
+
+processJsonData();
+
+});
+
+
+
+async function processJsonData() {
+
+clearUI();
+
+
+
+
+
+const response = await requestApi();
+
+country.textContent = response.address;
+
+time.textContent = new Date().toLocaleTimeString("en-US", {
+
+timeZone: response.timezone,
+
+});
+
+
+
+if (response.alerts && response.alerts.length > 0) {
+
+warning1.textContent = "Warning:";
+
+warning2.textContent = response.alerts[0].headline;
+
+} else {
+
+warning1.textContent = "";
+
+warning2.textContent = "";
+
+}
+
+temperature.textContent = "temp: " + response.days[0].temp + " F";
+
+humidity.textContent =
+
+"humidity: " + response.days[0].humidity + " %";
+
+wind.textContent = "wind: " + response.days[0].windspeed + " mph";
+
+apiTemperature = response.days[0].temp;
+
+renderTemperature();
+
+h2.textContent = response.days[0].conditions;
+
+displayWeatherIcon(response.days[0].icon);
+
+
+
+for (i = 0; i < response.days.length; i++) {
+
+let forecast = response.days[i];
+
+days[i].textContent = new Date(forecast.datetime).toLocaleDateString(
+
+"en-US",
+
+{ weekday: "long" },
+
+);
+
+temps[i].textContent = ` temp: ${forecast.temp}`;
+
+winds[i].textContent = ` Wind speed: ${forecast.windspeed}`;
+
+times[i].textContent = `${forecast.datetime}`;
+
+imgs[i].src = `assets/icons/${forecast.icon}.png`;
+
+
+}
+
+} 
+
+
+
+
+function getCelcius(F) {
+
+return (5 / 9) * (F - 32);
+
+}
+
+
+
+async function displayWeatherIcon(TodaysDescription) {
+
+icon.src = await `assets/icons/${TodaysDescription}.png`;
+
+}
+
+renderTemperature = () => {
+
+if (isFahrenheit) {
+
+span1.textContent = apiTemperature;
+
+span2.textContent = "F";
+
+} else {
+
+span1.textContent = getCelcius(apiTemperature).toFixed(1);
+
+span2.textContent = "C";
+
+}
+
+};
+
+
+
+btn.addEventListener("click", (e) => {
+
+e.preventDefault();
+
+isFahrenheit = !isFahrenheit;
+
+renderTemperature();
+
+});
+
+
+
+processJsonData();
+
+</script>
+
+</body>
+
+</html>

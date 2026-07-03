@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 40px 20px;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
+/* Search Form */
+#search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#search-form input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#search-form input[type="submit"],
+#search-form button {
+  padding: 8px 14px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#search-form button {
+  background-color: #666;
+}
+
+/* Current Weather Card */
+#weather-dashboard {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.meta-row,
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.location-details #city-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.location-details #local-time {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Center Hero View - Fixed without negative margins */
+.hero-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+}
+
+.hero-weather img {
+  width: 90px;
+  height: 90px;
+}
+
+.hero-weather h1 {
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.hero-weather h2 {
+  font-size: 1.2rem;
+  color: #555;
+  text-transform: capitalize;
+}
+
+.stats-row {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  font-size: 0.95rem;
+}
+
+/* Weekly Forecast Section */
+#weekly-forecast {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto; /* Adds scrolling if screens are tiny */
+  max-width: 900px;
+  width: 100%;
+  padding: 10px 5px;
+}
+
+.forecast-card {
+  flex: 1;
+  min-width: 100px;
+  background: white;
+  padding: 15px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.forecast-day {
+  font-weight: bold;
+}
+
+.forecast-date {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.forecast-card img {
+  width: 40px;
+  height: 40px;
+}
+
+.forecast-temp {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.forecast-wind {
+  font-size: 0.8rem;
+  color: #666;
+}
