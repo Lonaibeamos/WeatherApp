@@ -1,40 +1,35 @@
-import path from "node:path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from 'node:path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+
 export default {
-  mode: "development",
-  entry: "./src/index.js",
+  mode: 'development',
+  entry: './src/index.js',
   output: {
-    filename: "main.js",
-    path: path.resolve(import.meta.dirname, "dist"),
+    filename: 'main.js',
+    path: path.resolve(import.meta.dirname, 'dist'),
     clean: true,
   },
   module: {
     rules: [
-      {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.(jpeg|png|jpg|gif|svg)$/i,
-        type: "asset/resource",
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: "asset/resource",
-      },
-      {
-        test: /\.html$/i,
-        use: ["html-loader"],
-      },
+      { test: /\.css$/i, use: ['style-loader', 'css-loader'] },
+      { test: /\.(jpeg|png|jpg|gif|svg)$/i, type: 'asset/resource' },
+      { test: /\.(woff|woff2|eot|ttf|otf)$/i, type: 'asset/resource' },
+      { test: /\.html$/i, use: ['html-loader'] },
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/template.html",
+    new HtmlWebpackPlugin({ template: './src/template.html' }),
+    new CopyPlugin({
+      patterns: [{ from: 'src/assets', to: 'assets' }],
     }),
   ],
-  devtool: "eval-source-map",
+  devtool: 'eval-source-map',
   devServer: {
-    watchFiles: ["./src/**/*"],
+    watchFiles: ['./src/**/*'],
+    static: {
+      directory: path.resolve(import.meta.dirname, 'src/assets'),
+      publicPath: '/assets',
+    },
   },
 };
